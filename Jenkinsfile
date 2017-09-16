@@ -22,10 +22,17 @@ pipeline {
                 sh 'composer install'
             }
         }
+        stage('grade') {
+            steps {
+                echo 'Grading ${env.BUILD_ID} on ${env.JENKINS_URL}'
+                sh 'composer grade'
+                sh 'putgrade'
+            }
+        }
         stage('test') {
             steps {
                 echo 'Testing ${env.BUILD_ID} on ${env.JENKINS_URL}'
-                sh 'composer grade'
+                sh 'composer test'
             }
         }
     }
