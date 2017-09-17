@@ -29,12 +29,6 @@ pipeline {
                 sh 'putgrade'
             }
         }
-        stage('test') {
-            steps {
-                echo 'Testing ${env.BUILD_ID} on ${env.JENKINS_URL}'
-                sh 'composer test'
-            }
-        }
     }
     
     post {
@@ -43,7 +37,7 @@ pipeline {
             sh 'rm -fr vendor'
         }
         success {
-            echo 'Success'
+            echo 'SUCCESS'
         }
         failure {
             echo 'Failure'
