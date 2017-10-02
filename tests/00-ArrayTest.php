@@ -107,3 +107,34 @@ class ArraysTest extends \PHPUnit\Framework\TestCase {
     }
 }
 
+public function testMergeArrays01()
+    {
+        // arrange
+        $arr1 = [[77, 87], [23, 45]];
+        $arr2 = ["weber", "edu", "university"];
+        $expected = [
+            ['weber', 77, 87],
+            ['edu', 23, 45],
+            ['university']
+        ];
+        // act
+        $actual = MergeArrays($arr1, $arr2);
+        // assert
+        $this->assertEquals($expected, $actual);
+    }
+    public function testMergeArrays02()
+    {
+        // arrange
+        $arr1 = [[77, 87], [23, 45], [1, 2, 3]];
+        $arr2 = ["weber", "edu"];
+        $expected = [
+            ['weber', 77, 87],
+            ['edu', 23, 45],
+            [1, 2, 3]
+        ];
+        // act
+        $actual = MergeArrays($arr1, $arr2);
+        // assert
+        $this->assertEquals($expected, $actual);
+    }
+}
